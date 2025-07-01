@@ -12,12 +12,31 @@ const envContent = Object.entries(pkg.debug.env).map(([key, val]) => `${key}=${v
 fs.writeFileSync(path.join(__dirname, '.debug.env'), envContent.join('\n'))
 
 // bootstrap
-spawn(
-  // TODO: terminate `npm run dev` when Debug exits.
-  process.platform === 'win32' ? 'npm.cmd' : 'npm',
-  ['run', 'dev'],
-  {
+try {
+  const cmd = process.platform === 'win32' ? 'cmd' : 'npm'; // changed cmd for windows fallback
+  const args = process.platform === 'win32' ? ['/c', 'npm.cmd', 'run', 'dev'] : ['run', 'dev'];
+  const procEnv = {
+    VSCODE_DEBUG: 'true',
+    PATH: process.env.PATH, // Trims environment down to avoid conflicts
+  };
+
+  console.log('Command:', cmd);
+  console.log('Arguments:', args);
+  console.log('Simplified Environment:', procEnv);
+
+  const child = spawn(cmd, args, {
     stdio: 'inherit',
-    env: Object.assign(process.env, { VSCODE_DEBUG: 'true' }),
-  },
-)
+    env: procEnv,
+    cwd: __dirname,
+  });
+
+  child.on('error', (err) => {
+    console.error('Error spawning process, check cmd/args/env:', err);
+  });
+
+  child.on('exit', (code, signal) => {
+    console.log(`Process exited with code: ${code}, signal: ${signal}`);
+  });
+} catch (e) {
+  console.error('Unhandled error:', e);
+}
