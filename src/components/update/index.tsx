@@ -122,9 +122,6 @@ const Update = () => {
               )}
         </div>
       </Modal>
-      <button disabled={checking} onClick={checkUpdate}>
-        {checking ? 'Checking...' : 'Check update'}
-      </button>
     </>
   )
 }
