@@ -1,4 +1,28 @@
-# electron-vite-react
+
+## 🛫 Quick Setup
+
+```sh
+# --------------------------------后端---------------------------------
+# open GPT-Academic-WS
+git clone https://github.com/binary-husky/gpt_academic_private.git
+cd gpt_academic_private
+python -m shared_utils.fastapi_stream_server
+
+# --------------------------------前端---------------------------------
+# clone the project
+git clone https://github.com/binary-husky/frontend-gptac.git
+# enter the project directory
+cd frontend-gptac
+# install dependency
+npm install
+# develop
+npm run dev
+```
+
+
+
+
+# 模板的调试说明
 
 [![awesome-vite](https://awesome.re/mentioned-badge.svg)](https://github.com/vitejs/awesome-vite)
 ![GitHub stars](https://img.shields.io/github/stars/caoxiemeihao/vite-react-electron?color=fa6470)
@@ -10,13 +34,13 @@ English | [简体中文](README.zh-CN.md)
 
 ## 👀 Overview
 
-📦 Ready out of the box  
-🎯 Based on the official [template-react-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts), project structure will be familiar to you  
-🌱 Easily extendable and customizable  
-💪 Supports Node.js API in the renderer process  
-🔩 Supports C/C++ native addons  
-🐞 Debugger configuration included  
-🖥 Easy to implement multiple windows  
+📦 Ready out of the box
+🎯 Based on the official [template-react-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts), project structure will be familiar to you
+🌱 Easily extendable and customizable
+💪 Supports Node.js API in the renderer process
+🔩 Supports C/C++ native addons
+🐞 Debugger configuration included
+🖥 Easy to implement multiple windows
 
 ## 🛫 Quick Setup
 
@@ -40,8 +64,8 @@ npm run dev
 
 ## 📂 Directory structure
 
-Familiar React application structure, just with `electron` folder on the top :wink:  
-*Files in this folder will be separated from your React application and built into `dist-electron`*  
+Familiar React application structure, just with `electron` folder on the top :wink:
+*Files in this folder will be separated from your React application and built into `dist-electron`*
 
 ```tree
 ├── electron                                 Electron-related code
@@ -60,7 +84,7 @@ Familiar React application structure, just with `electron` folder on the top :wi
 <!--
 ## 🚨 Be aware
 
-This template integrates Node.js API to the renderer process by default. If you want to follow **Electron Security Concerns** you might want to disable this feature. You will have to expose needed API by yourself.  
+This template integrates Node.js API to the renderer process by default. If you want to follow **Electron Security Concerns** you might want to disable this feature. You will have to expose needed API by yourself.
 
 To get started, remove the option as shown below. This will [modify the Vite configuration and disable this feature](https://github.com/electron-vite/vite-plugin-electron-renderer#config-presets-opinionated).
 
